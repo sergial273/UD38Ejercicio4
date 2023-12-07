@@ -1,0 +1,86 @@
+<div class="card p-3">
+  <p>(clicar celda para editar)</p>
+  <table
+    class="table table-bordered table-responsive-md table-striped text-center"
+  >
+    <thead>
+      <tr>
+        <th class="text-center">Titulo</th>
+        <th class="text-center">Descripcion</th>
+        <th class="text-center">Completar</th>
+        <th class="text-center">Borrar</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of clientes ; track $index) {
+      <tr>
+        @if (item.seleccionado) {
+        <td
+          class="pt-3-half"
+          contenteditable="true"
+          [style.background]="'#57FC7D'"
+        >
+          {{ item.codigo }}
+        </td>
+        <td
+          class="pt-3-half"
+          contenteditable="true"
+          [style.background]="'#57FC7D'"
+        >
+          {{ item.descripcion }}
+        </td>
+        <td [style.background]="'#57FC7D'">
+          <span class="table-remove"
+            ><button
+              (click)="change(item.codigo, item.descripcion)"
+              type="button"
+              class="btn btn-success btn-rounded btn-sm my-0"
+            >
+              Completar
+            </button></span
+          >
+        </td>
+
+        <td [style.background]="'#57FC7D'">
+          <span class="table-remove"
+            ><button
+              (click)="remove(item.codigo, item.descripcion)"
+              type="button"
+              class="btn btn-danger btn-rounded btn-sm my-0"
+            >
+              Borrar
+            </button></span
+          >
+        </td>
+        } @else {
+        <td class="pt-3-half" contenteditable="true">{{ item.codigo }}</td>
+        <td class="pt-3-half" contenteditable="true">{{ item.descripcion }}</td>
+        <td>
+          <span class="table-remove"
+            ><button
+              (click)="change(item.codigo, item.descripcion)"
+              type="button"
+              class="btn btn-success btn-rounded btn-sm my-0"
+            >
+              Completar
+            </button></span
+          >
+        </td>
+
+        <td>
+          <span class="table-remove"
+            ><button
+              (click)="remove(item.codigo, item.descripcion)"
+              type="button"
+              class="btn btn-danger btn-rounded btn-sm my-0"
+            >
+              Borrar
+            </button></span
+          >
+        </td>
+        }
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
